@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+// use App\http\Controllers\Auth;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+// Route::get('/','TestController@index');
+
+// Route::get('/contact','ContactController@index');
+//หน้าแรกสำหรับเข้าสู่ Controller
+
+Auth::routes();
+Route::resource('/', 'CondoController');
+// สำหรับเข้า services
+Route::resource('/services', 'ServiceController');
+// สำหรับ Building
+Route::resource('/buildings', 'BuildingController');
+// นิติบุคคล
+Route::resource('/juristics', 'JuristicController');
+// พนักงาน
+Route::resource('/users', 'UserController');
+// ห้องพัก
+Route::resource('/rooms', 'RoomController');
+// ลูกค้า
+Route::resource('/customers','CustomerController');
+// contact
+Route::resource('/contacts', 'ContactController');
+Route::resource('/ctt', 'ContactTypeController');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/login','Auth\LoginController@index');
