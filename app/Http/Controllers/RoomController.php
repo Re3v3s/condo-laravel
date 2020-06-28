@@ -19,7 +19,6 @@ class RoomController extends Controller
         //
         $FirstJoin = Rooms::select('rooms.id','rooms.name','rooms.floor','rooms.customer_id','customers.firstname')
             ->leftjoin('customers','customers.id','=','rooms.customer_id')
-            // ->leftjoin('rooms','rooms.customer_id','=','customers','customers.id')
             ->where('rooms.id','>',0)
             ->paginate(5);
         // $data = Rooms::where('id','>',0)->paginate(5);

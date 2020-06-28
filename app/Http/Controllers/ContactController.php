@@ -89,8 +89,8 @@ class ContactController extends Controller
 
 
         //! Create Contact
-        Contacts::create($request->all());
-
+        $Ctid = Contacts::create($request->all());
+        $LastCtId = $Ctid->id;
         // //! Update who live in Room by request-> room id
         $updateroom = Rooms::find($request->room_id);
         $updateroom->customer_id = $request->customer_id;

@@ -34,5 +34,21 @@
       body{
         font-family: 'Sarabun', sans-serif;
       }
-  </style>
+
+    /* @media print{
+        #navmedia{
+            display:none;
+        }
+        aside {
+            display:none;
+        }
+        button{
+            display:none;
+        }
+        #cardmedia{
+            height: 100%;
+            margin: 0px 0px 0px 0px;
+        }
+    } */
+</style>
 </head>

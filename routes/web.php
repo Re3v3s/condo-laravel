@@ -39,7 +39,8 @@ Route::resource('/customers','CustomerController');
 // contact
 Route::resource('/contacts', 'ContactController');
 Route::resource('/ctt', 'ContactTypeController');
-
+// contact data
+Route::resource('/datact', 'ContactDataController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
