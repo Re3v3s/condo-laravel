@@ -41,6 +41,8 @@ Route::resource('/contacts', 'ContactController');
 Route::resource('/ctt', 'ContactTypeController');
 // contact data
 Route::resource('/datact', 'ContactDataController');
+// Add payment
+Route::resource('/payment', 'PaymentController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

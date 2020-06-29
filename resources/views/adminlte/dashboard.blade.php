@@ -70,7 +70,7 @@
           </li>
 
           <li class="nav-item">
-              <a href="#" class="nav-link">
+          <a href="{{ url('payment')}}" class="nav-link">
                     <i class="nav-icon fas fa-save"></i>
                     <p>
                         บันทึกค่าใช้จ่าย
@@ -207,8 +207,6 @@
 
 
             @yield('content')
-
-
 
 
           </div><!-- /.col -->
