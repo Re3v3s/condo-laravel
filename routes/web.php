@@ -43,6 +43,13 @@ Route::resource('/ctt', 'ContactTypeController');
 Route::resource('/datact', 'ContactDataController');
 // Add payment
 Route::resource('/payment', 'PaymentController');
+// request payment
+Route::get('/payment-sent','PaymentController@payment');
+// ! ตัวอย่างการใช้ controller นอกเหนือจาก resource
+// Route::get('/article-count', 'ArticleController@countArticle');
+
+// Water
+Route::resource('/water', 'WaterController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
