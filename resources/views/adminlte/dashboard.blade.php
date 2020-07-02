@@ -79,7 +79,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{url('water')}}" class="nav-link">
                   <i class="nav-icon fas fa-tint"></i>
                   <p>
                       บันทึกค่าน้ำ

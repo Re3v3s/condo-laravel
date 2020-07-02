@@ -50,6 +50,8 @@ Route::get('/payment-sent','PaymentController@payment');
 
 // Water
 Route::resource('/water', 'WaterController');
+Route::get('/water-check', 'WaterController@watercheck');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
