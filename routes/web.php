@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillController;
 use Illuminate\Support\Facades\Route;
 // use App\http\Controllers\Auth;
 /*
@@ -51,6 +52,9 @@ Route::get('/payment-sent','PaymentController@payment');
 // Water
 Route::resource('/water', 'WaterController');
 Route::get('/water-check', 'WaterController@watercheck');
+// Bill
+Route::resource('/bill', 'BillController');
+Route::get('/bill-sent','BillController@billsent');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

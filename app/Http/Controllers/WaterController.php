@@ -66,9 +66,43 @@ class WaterController extends Controller
     {
         //
         // return dd($request->all());
-        $save_ml = MeterLogDetails::create([
-            
-        ]);
+        // $howmanyrow = count($request->meter_log_id);
+
+        if(count($request->room) > 0){
+            foreach ($request->room as $key => $v) {
+                $oldnum = (int)$request->old_number[$key];
+                $newnum = (int)$request->new_number[$key];
+                $result =  ($newnum - $oldnum) * 12;
+                $mld = array(
+                    'old_number' => $oldnum,
+                    'new_number' => $newnum,
+                    'date_check' => $request->date_check,
+                    'price_water' => $result,
+                    'month' => $request->month,
+                    'year' => $request->year,
+                    'meter_log_id' => $request->meter_log_id[$key]
+
+                );
+                // save meter_log_details
+                $savemld = MeterLogDetails::create($mld);
+
+                // update MeterLogs by ID
+                $ml = MeterLogs::find($request->meter_log_id[$key]);
+                $ml->meter_current = $newnum;
+                $ml->save();
+            }
+
+            return redirect('/water')->with('success','เพิ่มค่าน้ำเสร็จเรียบร้อย');
+        }
+
+
+
+        // $total_water = $result * 12;
+
+            // return dd($datasave);
+        // $save_ml = MeterLogDetails::create([
+
+        // ]);
     }
 
     /**

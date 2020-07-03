@@ -26,12 +26,12 @@
                         <td>{{$data->name}}</td>
                         <td>{{$data->firstname }}</td>
                     <td>
-                    <form action="{{url('datact/'.$data->id)}}">
-                        @method('POST')
-                        @csrf
-                            <button class="btn btn-warning">แสดงข้อมูล</button>
-                        </td>
-                    </form>
+                        <form action="{{url('datact/'.$data->id)}}">
+                            @method('POST')
+                            @csrf
+                                <button class="btn btn-warning">แสดงข้อมูล</button>
+                    </td>
+                        </form>
                     </tr>
 
                     @endforeach

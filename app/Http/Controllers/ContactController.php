@@ -30,7 +30,7 @@ class ContactController extends Controller
 
 
 
-        $date = date('dmY');
+        $date = date('Ymd');
 
         $Cf = date("Y-m-d H:i:s");
         // Cno เพิ่ม 0 หลัง $date ให้มีความยาวเป็น 12 ตัว ไม่รวม $date ถ้า $date มี 8 ตัว  ก็เพิ่มไปอีก 4 ให้ครบ 12

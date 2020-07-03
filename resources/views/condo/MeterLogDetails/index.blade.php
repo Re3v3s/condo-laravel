@@ -2,6 +2,12 @@
 @section('title','Water Page')
 @section('content')
 <div class="container">
+    @if (Session::has('success'))
+        <div class="alert alert-success text-center">
+                {{Session::get('success')}}
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-hearder bg-dark text-white">
 
