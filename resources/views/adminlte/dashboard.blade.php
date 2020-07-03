@@ -97,7 +97,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+        <a href="{{url('billmake')}}" class="nav-link">
                   <i class="nav-icon fas fa-file-invoice"></i>
                   <p>
                       สร้างบิล
@@ -159,19 +159,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+              <a href="{{url('report')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>รายงานค่าห้อง</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{url('reportnopay')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>รายงานค่าห้องค้างจ่าย</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="{{url('reportmtn')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>รายงานแจ้งซ่อม</p>
                 </a>

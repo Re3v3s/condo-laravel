@@ -71,16 +71,26 @@ class BillController extends Controller
     {
         //
         // return dd($id);
+        $num = 1;
+        // order
         $oddatas = Orders::select('orders.id as od_id','order_details.amount','order_details.price','order_details.total','services.name as sv_name')
                             ->leftjoin('order_details','order_details.order_id','=','orders.id')
                             ->leftjoin('services','services.id','=','order_details.service_id')
                             ->leftjoin('rooms','rooms.id','=','orders.room_id')
                             ->where('orders.id','=',$id)
                             ->get();
+        // water
+        $water = MeterLogDetails::select('meter_log_details.old_number as old_num','meter_log_details.new_number as new_num','meter_log_details.price_water as price_w')
+                                    ->leftjoin('orders','orders.meter_log_id','=','meter_log_details.id')
+                                    ->where('orders.id','=',$id)
+                                    ->get();
+        $oldnum = $water[0]->old_num;
+        $newnum = $water[0]->new_num;
+        $result = (int)$newnum - (int)$oldnum;
+        $last_result = $result * 12;
 
-                    // return dd($oddatas);
-
-                    return view('condo.Bill.show');
+                    // return dd($result , $last_result);
+            return view('condo.Bill.show',compact('oddatas','num','result','last_result','water'));
     }
 
     /**

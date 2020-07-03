@@ -56,6 +56,18 @@ Route::get('/water-check', 'WaterController@watercheck');
 Route::resource('/bill', 'BillController');
 Route::get('/bill-sent','BillController@billsent');
 
+// Billmake
+Route::resource('/billmake','BillmakeController');
+
+// report
+Route::resource('/report', 'ReportController');
+Route::get('/report-sent','ReportController@reportsent');
+
+// reportnopay
+Route::resource('/reportnopay', 'ReportNoPayController');
+
+// maintainnance
+Route::resource('/reportmtn', 'ReportmtnController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
