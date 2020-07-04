@@ -15,17 +15,35 @@
       <a href="{{ url('/')}}" class="nav-link text-white">Home</a>
 
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{}}" class="nav-link">Contact</a>
+      </li> --}}
     </ul>
 
     {{-- right navbar --}}
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link text-white">Logout</a>
-          </li>
+          </li> --}}
+          <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->username }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
       </ul>
+
 
   </nav>
   <!-- /.navbar -->
@@ -47,7 +65,7 @@
           <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block"> {{Auth::user()->username}}</a>
         </div>
       </div>
       {{-- end of sidebar Panel --}}
@@ -106,8 +124,8 @@
         </li>
 
 
-
-          <li class="nav-item has-treeview">
+        @if (Auth::user()->level == 'Admin')
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-pen"></i>
               <p>
@@ -148,6 +166,8 @@
                 </li>
             </ul>
           </li>
+        @endif
+
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -170,15 +190,15 @@
                   <p>รายงานค่าห้องค้างจ่าย</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{url('reportmtn')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>รายงานแจ้งซ่อม</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
-
+{{--
           <li class="nav-item">
             <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tools"></i>
@@ -186,7 +206,7 @@
                       แจ้งซ่อม
                   </p>
             </a>
-        </li>
+        </li> --}}
 
 
 

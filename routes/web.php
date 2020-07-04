@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', function () {
     return view('auth.login');
 });
-
+// Route::get('/testlogin','LoginController@testlogin');
 // Route::get('/','TestController@index');
 
 // Route::get('/contact','ContactController@index');
@@ -64,11 +64,12 @@ Route::resource('/report', 'ReportController');
 Route::get('/report-sent','ReportController@reportsent');
 
 // reportnopay
-Route::resource('/reportnopay', 'ReportNoPayController');
+Route::resource('/reportnopay', 'ReportNotPayController');
+Route::get('/nopay-sent','ReportNotPayController@nopay');
 
 // maintainnance
 Route::resource('/reportmtn', 'ReportmtnController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/login','Auth\LoginController@index');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

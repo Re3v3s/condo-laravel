@@ -25,11 +25,14 @@ class ReportController extends Controller
             $year = $request->year;
         }
         $num = 1;
-        $RP = Orders::select('orders.id','rooms.name as r_name','customers.firstname as c_name')
+        $RP = Orders::select('orders.id','orders.total_price','rooms.name as r_name','customers.firstname as c_name')
                 ->leftjoin('rooms','rooms.id','=','orders.room_id')
-                ->leftjoin('customers','customers.id','=','orders.customer_id');
+                ->leftjoin('customers','customers.id','=','orders.customer_id')
+                ->where('orders.month','=',$month)
+                ->where('orders.year','=',$year)
+                ->get();
 
-        return view('condo.report.index',compact('RP'));
+        return view('condo.report.index',compact('RP','num','month','year'));
     }
     /**
      * Show the form for creating a new resource.

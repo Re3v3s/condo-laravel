@@ -55,8 +55,46 @@
                     </div>
                 </form>
 
-                </div>
             </div>
-        </div>
-    </div>
+        </div>   {{-- end card --}}
+
+
+            @if (isset($RP))
+                <div class="card">
+                    <div class="card-body text-center">
+                        <table class="table table-hover table-bordered">
+                                <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th>ลำดับ</th>
+                                            <th>เลขห้อง</th>
+                                            <th>ชื่อผู้เช่า</th>
+                                            <th>ค่าเช่า</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        @foreach ($RP as $data)
+                                            <tr>
+                                                <td>{{$num++}}</td>
+                                                <td>{{$data->r_name}}</td>
+                                                <td>{{$data->c_name}}</td>
+                                                <td>{{$data->total_price}}</td>
+                                            </tr>
+                                            @php
+                                                $total[] = $data->total_price;
+                                                $sum = array_sum($total);
+                                            @endphp
+                                        @endforeach
+                                            <tr class="bg-dark text-white">
+                                                <td></td>
+                                                <td></td>
+                                                <td>รวม</td>
+                                                <td>{{number_format($sum)}} {{'บาท'}}</td>
+                                            </tr>
+                                </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            @endif
+    </div> {{-- end container --}}
 @endsection

@@ -16,11 +16,17 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         //
         return view('condo.Bill.index');
     }
+
 
     public function billsent(Request $request)
     {
@@ -81,16 +87,19 @@ class BillController extends Controller
                             ->get();
         // water
         $water = MeterLogDetails::select('meter_log_details.old_number as old_num','meter_log_details.new_number as new_num','meter_log_details.price_water as price_w')
-                                    ->leftjoin('orders','orders.meter_log_id','=','meter_log_details.id')
+                                    ->leftjoin('orders','orders.meter_log_id','=','meter_log_details.meter_log_id')
                                     ->where('orders.id','=',$id)
                                     ->get();
-        $oldnum = $water[0]->old_num;
-        $newnum = $water[0]->new_num;
-        $result = (int)$newnum - (int)$oldnum;
-        $last_result = $result * 12;
+            if(count($water) > 0){
+                $oldnum = $water[0]->old_num;
+                $newnum = $water[0]->new_num;
+                $result = (int)$newnum - (int)$oldnum;
+                $last_result = $result * 12;
+                return view('condo.Bill.show',compact('oddatas','num','result','last_result','water'));
+            }else{
+                return view('condo.Bill.show',compact('oddatas','num'));
+            }
 
-                    // return dd($result , $last_result);
-            return view('condo.Bill.show',compact('oddatas','num','result','last_result','water'));
     }
 
     /**

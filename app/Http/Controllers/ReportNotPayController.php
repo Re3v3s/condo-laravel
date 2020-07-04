@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Orders;
 class ReportNotPayController extends Controller
 {
     /**
@@ -14,6 +14,30 @@ class ReportNotPayController extends Controller
     public function index()
     {
         //
+        return view('condo.reportnopay.index');
+    }
+
+    public function nopay(Request $request){
+
+        if(isset($request)){
+            $month = $request->month;
+            $year = $request->year;
+        }
+        $num = 1;
+        $nopays = Orders::select('orders.status','rooms.name as r_name')
+                            ->leftjoin('rooms','rooms.id','=','orders.room_id')
+                            ->where('orders.month','=',$month)
+                            ->where('orders.year','=',$year)
+                            ->where('orders.status','=',0)
+                            ->get();
+        // if(count($nopays) > 0){
+            // return dd($nopays);
+            return view('condo.reportnopay.index',compact('nopays','month','year','num'));
+        // }else {
+        //     // return dd($nopays);
+        //     return view('condo.reportnopay.index',compact('month','year'));
+        // }
+
     }
 
     /**

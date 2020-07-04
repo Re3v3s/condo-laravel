@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    You are logged in!
+
+                    <input type="hidden" value="{{Auth::id()}}">
+@foreach ($datas as $data)
+<p>{{$data->firstname}}</p>
+@foreach ($data->order as $order)
+
+<p>-> {{$order->total_price}}</p>
+
+@endforeach
+<hr>
+@endforeach
+
                 </div>
             </div>
         </div>

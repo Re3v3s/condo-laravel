@@ -21,4 +21,9 @@ class Orders extends Model
         'user_id',
         'meter_log_id'
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, 'customer_id', 'id');
+    }
 }
