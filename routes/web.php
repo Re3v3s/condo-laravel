@@ -24,6 +24,7 @@ Route::get('/login', function () {
 //หน้าแรกสำหรับเข้าสู่ Controller
 
 Auth::routes();
+
 Route::resource('/', 'CondoController');
 // สำหรับเข้า services
 Route::resource('/services', 'ServiceController');

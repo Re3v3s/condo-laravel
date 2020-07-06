@@ -47,10 +47,11 @@ class LoginController extends Controller
     }
 
 
-    protected function authenticated(Request $request, User $user)
-    {
-        return redirect("/");
-    }
+    // protected function authenticated(Request $request, User $user)
+    // {
+
+    //     return redirect("/");
+    // }
 
     // public function logout(Request $request)
     // {

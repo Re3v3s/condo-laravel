@@ -12,16 +12,18 @@ class CondoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('guest')->except('logout');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function index()
     {
         //
         return view('condo.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
